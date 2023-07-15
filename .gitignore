@@ -3,4 +3,3 @@ node_modules
 logs
 .vercel
 dist
-/src/app/module
