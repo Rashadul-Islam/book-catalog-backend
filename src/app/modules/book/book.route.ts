@@ -11,4 +11,7 @@ router.post(
   BookController.createBook
 );
 
+router.get('/', BookController.getAllBook);
+router.get('/recent-books', BookController.getRecentBooks);
+
 export const BookRoutes = router;

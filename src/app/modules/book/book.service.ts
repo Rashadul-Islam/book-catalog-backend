@@ -7,12 +7,12 @@ import { Book } from './book.model';
 import { bookSearchableFields } from './book.constant';
 
 const createBook = async (payload: IBook): Promise<IBook | null> => {
-  const result = (await Book.create(payload)).populate('academicFaculty');
+  const result = await Book.create(payload);
   return result;
 };
 
 const getSingleBook = async (id: string): Promise<IBook | null> => {
-  const result = await Book.findById(id).populate('academicFaculty');
+  const result = await Book.findById(id).populate('user');
 
   return result;
 };
@@ -61,7 +61,6 @@ const getAllBooks = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Book.find(whereConditions)
-    .populate('academicFaculty')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
@@ -76,6 +75,12 @@ const getAllBooks = async (
     },
     data: result,
   };
+};
+
+const getRecentBooks = async (): Promise<IBook[] | null> => {
+  const result = await Book.find({}).sort({ _id: -1 }).limit(10);
+
+  return result;
 };
 
 const updateBook = async (
@@ -98,6 +103,7 @@ export const BookService = {
   createBook,
   getSingleBook,
   getAllBooks,
+  getRecentBooks,
   updateBook,
   deleteBook,
 };
