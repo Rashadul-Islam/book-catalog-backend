@@ -62,8 +62,22 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const userLogout = catchAsync(async (req: Request, res: Response) => {
+  const result = AuthService.userLogout();
+
+  res.clearCookie('refreshToken');
+
+  sendResponse<ILoginUserResponse>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Logout successfully !',
+    data: result,
+  });
+});
+
 export const AuthController = {
   createUser,
   userLogin,
   refreshToken,
+  userLogout,
 };

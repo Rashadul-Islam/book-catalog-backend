@@ -76,4 +76,4 @@ UserSchema.pre('findOneAndUpdate', async function (this: any, next) {
   next();
 });
 
-export const User = model<IUser, UserModel>('User', UserSchema);
+export const User = model<IUser, UserModel>('user', UserSchema);

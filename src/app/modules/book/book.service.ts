@@ -95,6 +95,18 @@ const deleteBook = async (id: string): Promise<IBook | null> => {
   return result;
 };
 
+const createComment = async (
+  id: string,
+  payload: string
+): Promise<IBook | null> => {
+  const result = await Book.findByIdAndUpdate(
+    id,
+    { $push: { comments: { $each: [payload], $position: 0 } } },
+    { new: true }
+  );
+  return result;
+};
+
 export const BookService = {
   createBook,
   getSingleBook,
@@ -102,4 +114,5 @@ export const BookService = {
   getRecentBooks,
   updateBook,
   deleteBook,
+  createComment,
 };

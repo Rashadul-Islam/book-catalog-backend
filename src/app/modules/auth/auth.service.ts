@@ -52,7 +52,15 @@ const userLogin = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
 
   return {
     accessToken,
+    _id: _id,
     refreshToken,
+  };
+};
+
+const userLogout = (): ILoginUserResponse => {
+  return {
+    accessToken: '',
+    _id: '',
   };
 };
 
@@ -87,6 +95,7 @@ const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
 
   return {
     accessToken: newAccessToken,
+    _id: _id,
   };
 };
 
@@ -94,4 +103,5 @@ export const AuthService = {
   createUser,
   userLogin,
   refreshToken,
+  userLogout,
 };

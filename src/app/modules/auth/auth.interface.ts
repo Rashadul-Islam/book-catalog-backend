@@ -8,10 +8,12 @@ export type ILoginUser = {
 export type ILoginUserResponse = {
   accessToken: string;
   refreshToken?: string;
+  _id: string;
 };
 
 export type IRefreshTokenResponse = {
   accessToken: string;
+  _id: string;
 };
 
 export type IVerifiedLoginUser = {
