@@ -21,11 +21,10 @@ const getAllBooks = async (
   filters: IBookFilters,
   paginationOptions: IPaginationOptions
 ): Promise<IGenericResponse<IBook[]>> => {
-  const { limit, page, skip, sortBy, sortOrder } =
-    paginationHelpers.calculatePagination(paginationOptions);
-
   // Extract searchTerm to implement search query
   const { searchTerm, ...filtersData } = filters;
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelpers.calculatePagination(paginationOptions);
 
   const andConditions = [];
 
@@ -35,12 +34,11 @@ const getAllBooks = async (
       $or: bookSearchableFields.map(field => ({
         [field]: {
           $regex: searchTerm,
-          $paginationOptions: 'i',
+          $options: 'i',
         },
       })),
     });
   }
-
   // Filters needs $and to fullfill all the conditions
   if (Object.keys(filtersData).length) {
     andConditions.push({
@@ -55,8 +53,6 @@ const getAllBooks = async (
   if (sortBy && sortOrder) {
     sortConditions[sortBy] = sortOrder;
   }
-
-  // If there is no condition , put {} to give all data
   const whereConditions =
     andConditions.length > 0 ? { $and: andConditions } : {};
 
