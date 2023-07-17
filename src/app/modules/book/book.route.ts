@@ -9,6 +9,7 @@ const router = express.Router();
 router.post(
   '/create-book',
   validateRequest(BookValidation.createBookZodSchema),
+  // auth()
   BookController.createBook
 );
 
