@@ -85,7 +85,7 @@ const updateBook = async (
 ): Promise<IBook | null> => {
   const result = await Book.findOneAndUpdate({ _id: id }, payload, {
     new: true,
-  }).populate('academicFaculty');
+  });
 
   return result;
 };
