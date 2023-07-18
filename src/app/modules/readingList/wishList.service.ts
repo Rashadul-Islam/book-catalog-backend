@@ -3,7 +3,7 @@ import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import { IWishList } from './readingList.interface';
-import { WishList } from './wishList.model';
+import { WishList } from './readingList.model';
 import ApiError from '../../../errors/ApiError';
 import httpStatus from 'http-status';
 

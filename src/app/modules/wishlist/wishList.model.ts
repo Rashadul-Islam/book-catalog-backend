@@ -5,7 +5,7 @@ const WishListSchema = new Schema<IWishList, WishListModel>(
   {
     book: {
       type: Schema.Types.ObjectId,
-      ref: 'user',
+      ref: 'book',
       required: true,
     },
     user: {
@@ -23,6 +23,6 @@ const WishListSchema = new Schema<IWishList, WishListModel>(
 );
 
 export const WishList = model<IWishList, WishListModel>(
-  'WishList',
+  'wishList',
   WishListSchema
 );
