@@ -1,82 +1,48 @@
-  ### Live Link: https://cow-hut-auth-tau.vercel.app
+  ### Live Link: https://book-catalog-ten.vercel.app/
   ### Application Routes:
   
   ## Main part
   
    ### Auth (User)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/auth/login (POST)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/auth/signup (POST)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/auth/refresh-token (POST)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/auth/signup (POST)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/auth/signin (POST)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/auth/refresh-token (POST)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/auth/logout (POST)
 
-   ### Auth (Admin)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/admins/create-admin (POST)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/admins/login (POST)
-   - route: https://cow-hut-auth-tau.vercel.app/api/v1/admins/refresh-token (POST)
-   - route: https://cow-hut-auth-tau.vercel.app/api/v1/admins/my-profile (GET)
-   - route: https://cow-hut-auth-tau.vercel.app/api/v1/admins/my-profile (PATCH)
+   ### Book
+   - Route: https://book-catalog-ten.vercel.app/api/v1/books/recent-books (GET)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/books (GET)
+   - route: https://book-catalog-ten.vercel.app/api/v1/books/create-book (POST)
+   - route: https://book-catalog-ten.vercel.app/api/v1/books/64b4b491f02ae5461cd27798 (SINGLE GET)
+
+   ### Pagination and Filtering routes of book
+   - Route: https://book-catalog-ten.vercel.app/api/v1/books?page=1&limit=10 (GET) 
+   - Route: https://book-catalog-ten.vercel.app/api/v1/books?searchTerm=rang (GET) (accept author, title, genre as searchTerm value)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/books?genre=action (GET) (find book by exact genre)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/books?publicationDate=2023-06-07 (GET) (find book by exact date)
+
+   ### Comments
+   - route: https://book-catalog-ten.vercel.app/api/v1/books/comment/64b4b491f02ae5461cd27798 (POST)
    
-   ### User
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/users (GET)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/users/64a24e1fd288b04bba8b1426 (Single GET) 
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/users/64a24e1fd288b04bba8b1426 (PATCH)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/users/64a410542fed4490d5dfa907 (DELETE)
+   ### Wishlist
+   - Route: https://book-catalog-ten.vercel.app/api/v1/wishlist (GET)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/wishlist/create-wishlist (POST) 
 
-   ### Pagination and Filtering routes of user
-   - https://cow-hut-auth-tau.vercel.app/api/v1/users?page=1&limit=10 (GET)
-   - https://cow-hut-auth-tau.vercel.app/api/v1/users?sortBy=budget&sortOrder=asc (GET) 
-   - https://cow-hut-auth-tau.vercel.app/api/v1/users?searchTerm=rang (GET) (accept firstName, lastName, address as searchTerm value)
-   - https://cow-hut-auth-tau.vercel.app/api/v1/users?role=buyer (GET) (find user by exact role)
-   - https://cow-hut-auth-tau.vercel.app/api/v1/users?phoneNumber=017807187246 (GET) (find user by exact phone number)
+   ### Pagination of wishlist
+   - Route: https://book-catalog-ten.vercel.app/api/v1/wishlist?page=1&limit=10 (GET) 
 
-   #### Cows
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/cows (POST)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/cows (GET)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/cows/64a411ad2fed4490d5dfa90f (Single GET)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/cows/64a411ad2fed4490d5dfa90f (PATCH)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/cows/64a411ad2fed4490d5dfa90f (DELETE)
+   ### Readinglist
+   - Route: https://book-catalog-ten.vercel.app/api/v1/readinglist (GET)
+   - Route: https://book-catalog-ten.vercel.app/api/v1/readinglist/create-readinglist (POST) 
 
-   ### Pagination and Filtering routes of Cows
-   - https://cow-hut-auth-tau.vercel.app/api/v1/cows?pag=1&limit=10 (GET)
-   - https://cow-hut-auth-tau.vercel.app/api/v1/cows?sortBy=price&sortOrder=asc (GET)
-   - https://cow-hut-auth-tau.vercel.app/api/v1/cows?minPrice=3500 (GET) filter cow that starting price 3500 to max
-   - https://cow-hut-auth-tau.vercel.app/api/v1/cows?maxPrice=20000 (GET) filter cow that maximum price 3500 to min
-   - https://cow-hut-auth-tau.vercel.app/api/v1/cows?minPrice=2000&maxPrice=70000 (GET) filter cow within price range
-   - https://cow-hut-auth-tau.vercel.app/api/v1/cows?location=Chattogram (GET) filter cow by exact location
-   - https://cow-hut-auth-tau.vercel.app/api/v1/cows?age=3 (GET) filter cow by exact age
-   - https://cow-hut-auth-tau.vercel.app/api/v1/cows?searchTerm=rang (GET) accept name, location, breed as searchTerm value
+   ### Pagination of wishlist
+   - Route: https://book-catalog-ten.vercel.app/api/v1/readinglist?page=1&limit=10 (GET)
 
-   #### Orders
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/orders (POST)
-   - Route: https://cow-hut-auth-tau.vercel.app/api/v1/orders (GET)
-
- ## Bonus Part
-
-#### Admin
-   -Route: https://cow-hut-auth-tau.vercel.app/api/v1/admins/create-admin (POST)
-
-#### My Profile
-- Route: https://cow-hut-auth-tau.vercel.app/api/v1/users/my-profile (GET)
-- Route: https://cow-hut-auth-tau.vercel.app/api/v1/users/my-profile (PATCH)
-
-#### Order:
- - Route: https://cow-hut-auth-tau.vercel.app/api/v1/orders/64a4146cea08cda9e84f6210 (GET)
 
 #### Credential:
 
-## Admin
+## user
     {
-        "phoneNumber": "01890988443",
-        "password": "testTest"
-    }
-
-## Buyer
-    {
-        "phoneNumber": "01780788726",
-        "password": "testTest"
-    }
-
-## Seller
-    {
-        "phoneNumber": "01780718726",
-        "password": "testTest"
+        "email": "rashed@gmail.com",
+        "password": "rashed"
     }
