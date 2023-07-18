@@ -4,7 +4,7 @@ import { paginationFields } from '../../../constants/pagination';
 import catchAsync from '../../../shared/catchAsync';
 import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
-import { IBook } from './book.interface';
+import { IBook } from './wishList.interface';
 import { bookFilterableFields } from './book.constant';
 import { BookService } from './book.service';
 

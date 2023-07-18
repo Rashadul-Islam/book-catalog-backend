@@ -2,8 +2,8 @@ import { SortOrder } from 'mongoose';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
-import { IBook, IBookFilters } from './book.interface';
-import { Book } from './book.model';
+import { IBook, IBookFilters } from './wishList.interface';
+import { Book } from './wishList.model';
 import { bookSearchableFields } from './book.constant';
 
 const createBook = async (payload: IBook): Promise<IBook | null> => {
