@@ -52,7 +52,22 @@ const getAllReadingList = async (
   };
 };
 
+const updateReadingList = async (
+  payload: Partial<IReadingList>
+): Promise<IReadingList | null> => {
+  const result = await ReadingList.findOneAndUpdate(
+    { book: payload.book, user: payload.user },
+    { status: payload.status },
+    {
+      new: true,
+    }
+  );
+
+  return result;
+};
+
 export const ReadingListService = {
   createReadingList,
   getAllReadingList,
+  updateReadingList,
 };

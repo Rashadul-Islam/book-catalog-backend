@@ -7,11 +7,12 @@ import { ReadingListController } from './readingList.controller';
 const router = express.Router();
 
 router.post(
-  '/create-wishlist',
+  '/create-readinglist',
   validateRequest(ReadingListValidation.createReadingListZodSchema),
   auth(),
   ReadingListController.createReadingList
 );
 router.get('/', auth(), ReadingListController.getAllReadingList);
+router.get('/', auth(), ReadingListController.updateReadingList);
 
 export const ReadingListRoutes = router;

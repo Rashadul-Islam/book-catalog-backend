@@ -5,7 +5,7 @@ import catchAsync from '../../../shared/catchAsync';
 import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
 import { IReadingList } from './readingList.interface';
-import { ReadingListService } from './wishList.service';
+import { ReadingListService } from './readingList.service';
 
 const createReadingList = catchAsync(async (req: Request, res: Response) => {
   const { ...book } = req.body;
@@ -33,7 +33,19 @@ const getAllReadingList = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const updateReadingList = catchAsync(async (req: Request, res: Response) => {
+  const result = await ReadingListService.updateReadingList(req.body);
+
+  sendResponse<IReadingList>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Readinglist updated successfully',
+    data: result,
+  });
+});
+
 export const ReadingListController = {
   createReadingList,
   getAllReadingList,
+  updateReadingList,
 };
