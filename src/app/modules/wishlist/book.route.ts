@@ -1,23 +1,17 @@
 import express from 'express';
 import validateRequest from '../../middlewares/validateRequest';
-import { BookController } from './wishList.controller';
-import { BookValidation } from './wishList.validation';
 import auth from '../../middlewares/auth';
+import { WishListValidation } from './wishList.validation';
+import { WishListController } from './wishList.controller';
 
 const router = express.Router();
 
 router.post(
-  '/create-book',
-  validateRequest(BookValidation.createBookZodSchema),
+  '/create-wishlist',
+  validateRequest(WishListValidation.createWishListZodSchema),
   auth(),
-  BookController.createBook
+  WishListController.createWishList
 );
+router.get('/', auth(), WishListController.getAllWishList);
 
-router.post('/comment/:id', auth(), BookController.createComment);
-router.patch('/:id', auth(), BookController.updateBook);
-router.get('/', BookController.getAllBook);
-router.get('/recent-books', BookController.getRecentBooks);
-router.get('/:id', BookController.getSingleBook);
-router.delete('/:id', auth(), BookController.deleteBook);
-
-export const BookRoutes = router;
+export const WishListRoutes = router;
