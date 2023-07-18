@@ -1,4 +1,6 @@
-  ### Live Link: https://book-catalog-ten.vercel.app/
+  ### Live Link Backend: https://book-catalog-ten.vercel.app/
+  ### Live Link frontend: https://book-catalog-rashed.netlify.app/
+  ### Git Link frontend: https://github.com/Rashadul-Islam/book-catalog
   ### Application Routes:
   
   ## Main part
