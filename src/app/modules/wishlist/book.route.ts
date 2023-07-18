@@ -1,6 +1,6 @@
 import express from 'express';
 import validateRequest from '../../middlewares/validateRequest';
-import { BookController } from './book.controller';
+import { BookController } from './wishList.controller';
 import { BookValidation } from './wishList.validation';
 import auth from '../../middlewares/auth';
 
