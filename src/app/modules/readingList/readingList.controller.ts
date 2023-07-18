@@ -4,36 +4,36 @@ import { paginationFields } from '../../../constants/pagination';
 import catchAsync from '../../../shared/catchAsync';
 import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
-import { IWishList } from './readingList.interface';
-import { WishListService } from './wishList.service';
+import { IReadingList } from './readingList.interface';
+import { ReadingListService } from './wishList.service';
 
-const createWishList = catchAsync(async (req: Request, res: Response) => {
+const createReadingList = catchAsync(async (req: Request, res: Response) => {
   const { ...book } = req.body;
-  const result = await WishListService.createWishList(book);
+  const result = await ReadingListService.createReadingList(book);
 
-  sendResponse<IWishList>(res, {
+  sendResponse<IReadingList>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Added to wishList successfully',
+    message: 'Added to ReadingList successfully',
     data: result,
   });
 });
 
-const getAllWishList = catchAsync(async (req: Request, res: Response) => {
+const getAllReadingList = catchAsync(async (req: Request, res: Response) => {
   const paginationOptions = pick(req.query, paginationFields);
 
-  const result = await WishListService.getAllWishList(paginationOptions);
+  const result = await ReadingListService.getAllReadingList(paginationOptions);
 
-  sendResponse<IWishList[]>(res, {
+  sendResponse<IReadingList[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Wishlist fetched successfully',
+    message: 'Readinglist fetched successfully',
     meta: result.meta,
     data: result.data,
   });
 });
 
-export const WishListController = {
-  createWishList,
-  getAllWishList,
+export const ReadingListController = {
+  createReadingList,
+  getAllReadingList,
 };

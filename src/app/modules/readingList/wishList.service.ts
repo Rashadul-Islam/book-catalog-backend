@@ -2,28 +2,28 @@ import { SortOrder } from 'mongoose';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
-import { IWishList } from './readingList.interface';
-import { WishList } from './readingList.model';
 import ApiError from '../../../errors/ApiError';
 import httpStatus from 'http-status';
+import { IReadingList } from './readingList.interface';
+import { ReadingList } from './readingList.model';
 
-const createWishList = async (
-  payload: IWishList
-): Promise<IWishList | null> => {
-  const check = await WishList.findOne({
+const createReadingList = async (
+  payload: IReadingList
+): Promise<IReadingList | null> => {
+  const check = await ReadingList.findOne({
     book: payload.book,
     user: payload.user,
   });
   if (check) {
-    throw new ApiError(httpStatus.OK, 'Already added to wishlist');
+    throw new ApiError(httpStatus.OK, 'Already added to Readinglist');
   }
-  const result = await WishList.create(payload);
+  const result = await ReadingList.create(payload);
   return result;
 };
 
-const getAllWishList = async (
+const getAllReadingList = async (
   paginationOptions: IPaginationOptions
-): Promise<IGenericResponse<IWishList[]>> => {
+): Promise<IGenericResponse<IReadingList[]>> => {
   // Extract searchTerm to implement search query
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelpers.calculatePagination(paginationOptions);
@@ -34,12 +34,12 @@ const getAllWishList = async (
     sortConditions[sortBy] = sortOrder;
   }
 
-  const result = await WishList.find()
+  const result = await ReadingList.find()
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
 
-  const total = await WishList.countDocuments();
+  const total = await ReadingList.countDocuments();
 
   return {
     meta: {
@@ -51,7 +51,7 @@ const getAllWishList = async (
   };
 };
 
-export const WishListService = {
-  createWishList,
-  getAllWishList,
+export const ReadingListService = {
+  createReadingList,
+  getAllReadingList,
 };
