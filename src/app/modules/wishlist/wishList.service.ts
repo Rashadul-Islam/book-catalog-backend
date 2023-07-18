@@ -35,6 +35,7 @@ const getAllWishList = async (
   }
 
   const result = await WishList.find()
+    .populate('book')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);

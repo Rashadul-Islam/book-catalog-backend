@@ -35,6 +35,7 @@ const getAllReadingList = async (
   }
 
   const result = await ReadingList.find()
+    .populate('book')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
