@@ -13,6 +13,6 @@ router.post(
   ReadingListController.createReadingList
 );
 router.get('/', auth(), ReadingListController.getAllReadingList);
-router.get('/', auth(), ReadingListController.updateReadingList);
+router.patch('/', auth(), ReadingListController.updateReadingList);
 
 export const ReadingListRoutes = router;
