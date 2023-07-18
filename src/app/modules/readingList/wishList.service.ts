@@ -2,7 +2,7 @@ import { SortOrder } from 'mongoose';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
-import { IWishList } from './wishList.interface';
+import { IWishList } from './readingList.interface';
 import { WishList } from './wishList.model';
 import ApiError from '../../../errors/ApiError';
 import httpStatus from 'http-status';
